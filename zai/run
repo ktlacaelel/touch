@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+
+system "say '#{JSON::parse(ARGV[0])['text']}'"
+
