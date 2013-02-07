@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo awake | mail -s "`whoami` is awake" $1
