@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+
+system "echo '#{JSON::parse(ARGV[0])['text']}' | mail -s '#{JSON::parse(ARGV[0])['subject']}' #{JSON::parse(ARGV[0])['address']}"
+system 'say mail sent'
+
