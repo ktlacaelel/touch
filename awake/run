@@ -1,3 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 
-echo awake | mail -s "`whoami` is awake" $1
+require 'rubygems'
+require 'json'
+
+system "echo ok | mail -s \"`hostname` is awake\" #{JSON::parse(ARGV[0])['address']}"
+
