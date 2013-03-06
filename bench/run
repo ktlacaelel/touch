@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 
-data = process.argv[1]
-hash = eval(data);
+fs = require('fs');
+data = process.argv[2];
+eval('hash = ' + data);
 diff = process.hrtime(hash.startTime);
-console.log(diff[1] / 1000 / 1000)
+
+fs.appendFile('/tmp/bench.log', (diff[1] / 1000 / 1000) + "\n", function (err) {
+  if (err) throw err;
+});
+
