@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+
+start_time = JSON::parse(ARGV[0])['start_time']
+end_time   = Time.now.to_f
+
+File.open('/tmp/bench.log', 'w+') do |file|
+  file.puts (end_time * 1000.0) - (end_time * 1000.0)
+end
+
