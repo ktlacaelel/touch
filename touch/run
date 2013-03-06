@@ -1,3 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 
-touch /tmp/hi
+require 'rubygems'
+require 'json'
+
+system "touch #{JSON::parse(ARGV[0])['fileName']}"
+
