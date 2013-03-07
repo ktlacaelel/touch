@@ -1,11 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env ruby
 
-fs = require('fs');
-data = process.argv[2];
-eval('hash = ' + data);
-diff = process.hrtime(hash.startTime);
+received_time = Time.now.to_f
 
-fs.appendFile('/tmp/bench.log', (diff[1] / 1000 / 1000) + "\n", function (err) {
-  if (err) throw err;
-});
+require 'rubygems'
+require 'json'
+
+loaded_time = Time.now.to_f
+
+started_time = JSON::parse(ARGV[0])['startTime']
+
+system "echo received:'#{(received_time * 1000.0) - (started_time * 1000.0)}, loaded: #{(loaded_time * 1000.0) - (started_time * 1000.0)}' >> /tmp/bench.log"
 
