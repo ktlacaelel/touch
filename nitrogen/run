@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'json'
 
-port = JSON::parse(ARGV[0])['text']}
+port = JSON::parse(ARGV[0])['text']
 system "cd /Users/kazu/dev/git/nitrogen/webserver && forever start ./server.js #{port}"
 system "say nitrogen initiated"
 
