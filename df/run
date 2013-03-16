@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+df -h | mail -s "df for `hostname`" kazu@freshout.us
+
