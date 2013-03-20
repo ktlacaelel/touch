@@ -2,5 +2,5 @@
 
 key, value = ARGV[0].gsub(/\{|\}/, '').split(':')
 
-system "ifconfig | mail -s \"ips for `hostname`\" #{value}"
+system "ifconfig | mail -s \"ifconfig for `hostname`\" #{value}"
 
