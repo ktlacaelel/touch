@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+key, value = ARGV[0].gsub(/\{|\}/, '').split(':')
+
+system "ifconfig | grep 'inet' | mail -s \"ips for `hostname`\" #{value}"
+
