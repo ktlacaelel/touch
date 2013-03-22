@@ -27,11 +27,7 @@ nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
 occipital = []
 occipital.push 'cd /home/ubuntu/occipital'
 occipital.push '&&'
-occipital.push "daemon --delay=10 --limit=0 --attempts=100 --respawn"
-occipital.push "--name=occipital_#{occipital_port}"
-occipital.push '--chdir=/home/ubuntu/occipital'
-occipital.push '--'
-occipital.push "thin start --rackup config.ru -p #{occipital_port}"
+occipital.push "thin start --rackup config.ru -p #{occipital_port} -d"
 
 run_command(nitrogen)
 run_command(occipital)
