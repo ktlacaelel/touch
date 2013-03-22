@@ -17,8 +17,9 @@ end
 nitrogen = []
 nitrogen.push 'cd /home/ubuntu/nitrogen/webserver'
 nitrogen.push '&&'
-nitrogen.push "daemon -r -n nitrogen_#{nitrogen_port}"
-nitrogen.push '-D /home/ubuntu/nitrogen/webserver'
+nitrogen.push "daemon --delay=10 --limit=0 --attempts=100 --respawn"
+occipital.push "--name=nitrogen_#{nitrogen_port}"
+nitrogen.push '--chdir=/home/ubuntu/nitrogen/webserver'
 nitrogen.push '--'
 nitrogen.push './server.js /home/ubuntu/nitrogen/storage'
 nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
@@ -26,8 +27,9 @@ nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
 occipital = []
 occipital.push 'cd /home/ubuntu/occipital'
 occipital.push '&&'
-occipital.push "daemon -r -n occipital_#{occipital_port}"
-occipital.push '-D /home/ubuntu/occipital'
+occipital.push "daemon --delay=10 --limit=0 --attempts=100 --respawn"
+occipital.push "--name=occipital_#{occipital_port}"
+occipital.push '--chdir=/home/ubuntu/occipital'
 occipital.push '--'
 occipital.push "thin start --rackup config.ru -p #{occipital_port}"
 
