@@ -8,12 +8,29 @@ config = JSON::parse(ARGV[0])
 nitrogen_port  = config['nitrogen_port']
 occipital_port = config['occipital_port']
 
-command = "cd /home/ubuntu/nitrogen/webserver && daemon -r -n nitrogen_#{nitrogen_port} -D /home/ubuntu/nitrogen/webserver ./server.js /home/ubuntu/nitrogen/storage #{nitrogen_port} localhost:#{occipital_port}"
-system command
-puts command
+def run_command(array)
+  command = array.join(' ');
+  puts command
+  `#{command}`
+end
 
-command = "cd /home/ubuntu/occipital && daemon -r -n occipital_#{occipital_port} -D /home/ubuntu/occipital --  thin start --rackup config.ru -p #{occipital_port}"
+nitrogen = []
+nitrogen.push 'cd /home/ubuntu/nitrogen/webserver'
+nitrogen.push '&&'
+nitrogen.push "daemon -r -n nitrogen_#{nitrogen_port}"
+nitrogen.push '-D /home/ubuntu/nitrogen/webserver'
+nitrogen.push '--'
+nitrogen.push './server.js /home/ubuntu/nitrogen/storage'
+nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
 
-system command
-puts command
+occipital = []
+occipital.push 'cd /home/ubuntu/occipital'
+occipital.push '&&'
+occipital.push "daemon -r -n occipital_#{occipital_port}"
+occipital.push '-D /home/ubuntu/occipital'
+occipital.push '--'
+occipital.push "sudo -u ubuntu thin start --rackup config.ru -p #{occipital_port}"
+
+run_command(nitrogen)
+run_command(occipital)
 
