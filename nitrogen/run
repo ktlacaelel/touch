@@ -11,5 +11,8 @@ occipital_port = config['occipital_port']
 command = "daemon -r -n nitrogen_#{nitrogen_port} -D /home/ubuntu/nitrogen/webserver ./server.js /home/ubuntu/nitrogen/storage #{nitrogen_port} localhost:#{occipital_port}"
 system command
 puts command
-system "echo nitrogen initiated | mail -s \"nitrogen for `hostname` started\" ktlacaelel@gmail.com"
+
+command = "daemon -r -n occipital_#{nitrogen_port} -D /home/ubuntu/occipital thin start -R config.ru -p #{occipital_port}"
+system command
+puts command
 
