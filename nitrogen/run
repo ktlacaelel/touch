@@ -8,6 +8,6 @@ config = JSON::parse(ARGV[0])
 nitrogen_port  = config['nitrogen_port']
 occipital_port = config['occipital_port']
 
-system "cd /home/ubuntu/nitrogen/webserver && forever start server.js /home/ubuntu/nitrogen/storage #{nitrogen_port} localhost:#{occipital_port}"
+system "cd /home/ubuntu/nitrogen/webserver && daemon -n nitrogen_#{nitrogen_port} -D /home/ubuntu/nitrogen/webserver  #{nitrogen_port} ./server.js localhost:#{occipital_port}"
 system "echo nitrogen initiated | mail -s \"nitrogen for `hostname` started\" ktlacaelel@gmail.com"
 
