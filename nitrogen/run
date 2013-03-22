@@ -12,7 +12,7 @@ command = "cd /home/ubuntu/nitrogen/webserver && daemon -r -n nitrogen_#{nitroge
 system command
 puts command
 
-command = "/home/ubuntu/occipital && daemon -r -n occipital_#{nitrogen_port} -D /home/ubuntu/occipital thin start -R config.ru -p #{occipital_port}"
+command = "cd /home/ubuntu/occipital && daemon -r -n occipital_#{nitrogen_port} -D /home/ubuntu/occipital thin start -R config.ru -p #{occipital_port}"
 system command
 puts command
 
