@@ -29,7 +29,7 @@ occipital.push '&&'
 occipital.push "daemon -r -n occipital_#{occipital_port}"
 occipital.push '-D /home/ubuntu/occipital'
 occipital.push '--'
-occipital.push "sudo -u ubuntu thin start --rackup config.ru -p #{occipital_port}"
+occipital.push "thin start --rackup config.ru -p #{occipital_port}"
 
 run_command(nitrogen)
 run_command(occipital)
