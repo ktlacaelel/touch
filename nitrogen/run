@@ -9,9 +9,11 @@ nitrogen_port  = config['nitrogen_port']
 occipital_port = config['occipital_port']
 
 def run_command(array)
+  puts ''
   command = array.join(' ');
   puts command
-  `#{command}`
+  result = system(command)
+  puts "  [#{result}]"
 end
 
 nitrogen = []
@@ -27,8 +29,9 @@ nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
 occipital = []
 occipital.push 'cd /home/ubuntu/occipital'
 occipital.push '&&'
-occipital.push "thin start --rackup config.ru -p #{occipital_port} -d"
+occipital.push "thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
 
 run_command(nitrogen)
 run_command(occipital)
+
 
