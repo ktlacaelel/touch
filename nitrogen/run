@@ -29,7 +29,7 @@ nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
 occipital = []
 occipital.push 'cd /home/ubuntu/occipital'
 occipital.push '&&'
-occipital.push "thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
+occipital.push "usr/local/bin/thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
 
 run_command(nitrogen)
 run_command(occipital)
