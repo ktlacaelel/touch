@@ -9,9 +9,10 @@ nitrogen_port  = config['nitrogen_port']
 occipital_port = config['occipital_port']
 
 def run_command(array)
-  puts ''
   command = array.join(' ');
-  puts command
+  puts ''
+  puts "Executing: #{command}"
+  puts '=' * 80
   result = system(command)
   puts "  [#{result}]"
 end
@@ -33,5 +34,7 @@ occipital.push "sudo -u ubuntu /usr/local/bin/thin start --rackup config.ru -p #
 
 run_command(nitrogen)
 run_command(occipital)
-
+run_command(['whoami'])
+run_command(['pwd'])
+run_command(['ls -al'])
 
