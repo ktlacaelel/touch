@@ -33,8 +33,7 @@ occipital.push '&&'
 occipital.push "sudo -u ubuntu /usr/local/bin/thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
 
 run_command(nitrogen)
-run_command(occipital)
-run_command(['whoami'])
-run_command(['pwd'])
-run_command(['ls -al'])
-
+# run_command(occipital)
+# run_command(['whoami'])
+# run_command(['pwd'])
+# run_command(['ls -al'])
