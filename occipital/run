@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'json'
+
+config = JSON::parse(ARGV[0])
+
+nitrogen_port  = config['nitrogen_port']
+occipital_port = config['occipital_port']
+
+def run_command(array)
+  command = array.join(' ');
+  puts ''
+  puts "Executing: #{command}"
+  puts '=' * 80
+  result = system(command)
+  puts "  [#{result}]"
+end
+
+occipital = []
+occipital.push 'cd /home/ubuntu/occipital'
+occipital.push '&&'
+occipital.push "sudo -u ubuntu /usr/local/bin/thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
+
+run_command(occipital)
