@@ -20,6 +20,6 @@ end
 occipital = []
 occipital.push 'cd /home/ubuntu/occipital'
 occipital.push '&&'
-occipital.push "sudo -u ubuntu /usr/local/bin/thin start --rackup config.ru -p #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
+occipital.push "sudo -u ubuntu /usr/local/bin/thin start --rackup config.ru --address 10.0.0.86 --port #{occipital_port} --pid tmp/pids/occipital_port_#{occipital_port}.pid -d"
 
 run_command(occipital)
