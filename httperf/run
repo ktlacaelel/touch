@@ -2,7 +2,7 @@
 
 hostname = `hostname`
 port = hostname.scan(/\d+/)
-system "httperf --server=10.0.0.86 --port=#{3000 + port[0].to_i} --rate=10 --num-conns=100 > /tmp/httperf.txt"
+system "httperf --server=10.0.0.86 --port=#{3000 + port[0].to_i} --rate=10 --num-conns=1000 > /tmp/httperf.txt"
 recipients = ['ktlacaelel@gmail.com']
 
 recipients.each do |recipient|
