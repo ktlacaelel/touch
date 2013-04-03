@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'socket'
+require 'json'
+
+program = JSON::parse(ARGV[0])['program']
+socket = UDPSocket.new
+socket.send("Program: #{program}", 0, '10.0.0.131', 4913)
+socket.send("Result: #{eval(program)}", 0, '10.0.0.131', 4913)
+
