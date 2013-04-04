@@ -7,5 +7,5 @@ require 'json'
 program = JSON::parse(ARGV[0])['program']
 socket = UDPSocket.new
 result = eval(program)
-socket.send("Program: #{program}\n #{result}", 0, '10.0.0.131', 4913)
+socket.send("Program: #{program}\n#{result}", 0, '10.0.0.131', 4913)
 
