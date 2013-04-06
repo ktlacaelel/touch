@@ -24,8 +24,8 @@ nitrogen.push "daemon --delay=10 --limit=0 --attempts=100 --respawn"
 nitrogen.push "--name=nitrogen_#{nitrogen_port}"
 nitrogen.push '--chdir=/home/ubuntu/nitrogen'
 nitrogen.push '--'
-nitrogen.push 'sudo -u ubuntu ./server.js /home/ubuntu/nitrogen/storage'
-nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
+nitrogen.push 'sudo -u ubuntu ./server.js -s /home/ubuntu/nitrogen/storage'
+nitrogen.push "-p #{nitrogen_port} -o localhost:#{occipital_port}"
 
 run_command(nitrogen)
 
