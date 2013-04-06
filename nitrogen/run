@@ -18,11 +18,11 @@ def run_command(array)
 end
 
 nitrogen = []
-nitrogen.push 'cd /home/ubuntu/nitrogen/webserver'
+nitrogen.push 'cd /home/ubuntu/nitrogen'
 nitrogen.push '&&'
 nitrogen.push "daemon --delay=10 --limit=0 --attempts=100 --respawn"
 nitrogen.push "--name=nitrogen_#{nitrogen_port}"
-nitrogen.push '--chdir=/home/ubuntu/nitrogen/webserver'
+nitrogen.push '--chdir=/home/ubuntu/nitrogen'
 nitrogen.push '--'
 nitrogen.push 'sudo -u ubuntu ./server.js /home/ubuntu/nitrogen/storage'
 nitrogen.push "#{nitrogen_port} localhost:#{occipital_port}"
